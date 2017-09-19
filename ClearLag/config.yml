@@ -16,7 +16,7 @@ settings:
   enable-api: true
 
 #Meters your ram usage, if it goes above 'limit', run 'commands:'
-# -- 'ram-limit' is in MB, do not set it exactly to your max allocated ram amount
+# -- 'ram-limit' is in MB, do not set it exactly to your max allocated ram amoun                                                                                                                                                                                                                                             t
 # -- 'interval' is how often clearlag will check your ram usage
 # -- 'commands' lists the commands that will be ran upon hitting your ram-limit
 ram-meter:
@@ -26,19 +26,19 @@ ram-meter:
   commands:
     - 'lagg clear'
 
-#This limits how fast a user can move from chunk-to-chunk and will prevent users from overloading your server
-#I HIGHLY recommend you use this on servers with increased player-speeds/or fly enabled
+#This limits how fast a user can move from chunk-to-chunk and will prevent users                                                                                                                                                                                                                                              from overloading your server
+#I HIGHLY recommend you use this on servers with increased player-speeds/or fly                                                                                                                                                                                                                                              enabled
 # -- 'limit-only-fly' ONLY limit players who are currently flying
-# -- 'chunk-to-chunk-time' is in milliseconds. It's the time users are allowed to move from one chunk
-# -- to another.  Going faster over chunks then that number will cancel their movement
+# -- 'chunk-to-chunk-time' is in milliseconds. It's the time users are allowed t                                                                                                                                                                                                                                             o move from one chunk
+# -- to another.  Going faster over chunks then that number will cancel their mo                                                                                                                                                                                                                                             vement
 player-speed-limiter:
   enabled: false
   chunk-to-chunk-time: 600
   limit-only-fly: false
 
-#Should mobs be nerfed to prevent over-breeding to reduce CPU usage (And possibly raise TPS)
-#When mobs are stuck too close, collisions are extremely intensive putting a pretty mean load on the server
-# -- 'max-mobs' means how many bably/adult animals are allowed within the 'check-radius'
+#Should mobs be nerfed to prevent over-breeding to reduce CPU usage (And possibl                                                                                                                                                                                                                                             y raise TPS)
+#When mobs are stuck too close, collisions are extremely intensive putting a pre                                                                                                                                                                                                                                             tty mean load on the server
+# -- 'max-mobs' means how many bably/adult animals are allowed within the 'check                                                                                                                                                                                                                                             -radius'
 # -- 'check-radius' is the radius of what clearlag will check for 'max-mobs'
 mob-breeding-limiter:
   enabled: true
@@ -63,22 +63,22 @@ area-filter:
     - ENDER_PEARL
 
 #Should clearlag reset the config, or attempt to update your config on updates
-# -- 'force-update' is whether or not clearlag will reset your config with a newer version
-# -- settings this to false will make clearlag update your config rather then resetting
+# -- 'force-update' is whether or not clearlag will reset your config with a new                                                                                                                                                                                                                                             er version
+# -- settings this to false will make clearlag update your config rather then re                                                                                                                                                                                                                                             setting
 config-updater:
   force-update: false
 
-#This limits the mob egg spawners so players cannot "overload" the server with them
+#This limits the mob egg spawners so players cannot "overload" the server with t                                                                                                                                                                                                                                             hem
 # -- 'check-radius' is the radius clearlag will check for nearby entities
-# -- 'max-mobs' is how many entities may be in the radius before the spawning is blocked
+# -- 'max-mobs' is how many entities may be in the radius before the spawning is                                                                                                                                                                                                                                              blocked
 mobegg-limiter:
   enabled: true
-  check-radius: 15
-  max-mobs: 20
+  check-radius: 8
+  max-mobs: 10
 
 #Disable new chunk generation, or just put a cap on how many can load at once.
 #May cause many bugs with Spigot 1.8+, not recommended!
-# -- 'create-new-chunks' disables or enables chunk creation. false would disallow new chunks
+# -- 'create-new-chunks' disables or enables chunk creation. false would disallo                                                                                                                                                                                                                                             w new chunks
 # -- !UNSTABLE ON SPIGOT BUILDS!
 chunk-limiter:
   enabled: false
@@ -86,7 +86,7 @@ chunk-limiter:
   create-new-chunks: true
 
 #This modifies the view range of entities
-# -- Lower it is, the better your entity tick will be and the more CPU cycles you'll save
+# -- Lower it is, the better your entity tick will be and the more CPU cycles yo                                                                                                                                                                                                                                             u'll save
 # -- If it's too high, expect bugs / lots of lag
 mob-range:
   enabled: false
@@ -97,14 +97,14 @@ mob-range:
 #How long should items/Mobs be left on the ground
 # -- live-time's go by ticks (20 ticks a second)
 live-time:
-  enabled: true
+  enabled: false
   interval: 10
   mobtimer: true
   itemtimer: true
   arrowtimer: true
   arrowkilltime: 15
-  moblivetime: 6000
-  itemlivetime: 6000
+  moblivetime: 600
+  itemlivetime: 240
 
 #This option disallows the placement of too many tnt-minecarts
 # -- 'radius' is the radius clearlag will check for TNT-Minecarts
@@ -134,8 +134,9 @@ firespread-reducer:
 #     and possibly removed.
 chunk-entity-limiter:
   enabled: true
-  limit: 10
+  limit: 8
   entities:
+    - bat
     - Squid
     - Zombie
     - Skeleton
@@ -146,29 +147,30 @@ chunk-entity-limiter:
     - Cow
     - Horse
     - pig_zombie
-  # - Pig liveTime=100 <- This mob will be REMOVED if it's been alive for 100 ticks (5 seconds)
+    - mushroom_cow
+  # - Pig liveTime=100 <- This mob will be REMOVED if it's been alive for 100 ti                                                                                                                                                                                                                                             cks (5 seconds)
 
 #How many mobs should be allowed to spawn globally
 # -- 'interval' is the check interval check the current spawn amounts
 spawn-limiter:
   enabled: false
   interval: 15
-  mobs: 4200
-  animals: 500
+  mobs: 300
+  animals: 300
 
 #Meters your TPS, if it goes to low, run the commands you wrote below!
 # -- 'interval' is how often tps-meter will check the TPS
 # -- 'tps-trigger' is at what TPS the commands will be ran at
-# -- 'tps-recover' is at what TPS should the TPS be considered stable after 'tps-trigger' is executed
+# -- 'tps-recover' is at what TPS should the TPS be considered stable after 'tps                                                                                                                                                                                                                                             -trigger' is executed
 # -- 'commands' lists what commands will be executed when tps-tigger is reached
-# -- 'recover-commands' lists what commands will be executed when tps-recover is reached
-# -- 'trigger-broadcast-message' specifies which message should be broadcasted when tps-trigger runs
-# -- 'recover-broadcast-message' specifies which message should be broadcasted when TPS recovers
+# -- 'recover-commands' lists what commands will be executed when tps-recover is                                                                                                                                                                                                                                              reached
+# -- 'trigger-broadcast-message' specifies which message should be broadcasted w                                                                                                                                                                                                                                             hen tps-trigger runs
+# -- 'recover-broadcast-message' specifies which message should be broadcasted w                                                                                                                                                                                                                                             hen TPS recovers
 # -- 'broadcast-enabled' defines whether or not tps-meter should broadcast
 tps-meter:
   enabled: false
-  trigger-broadcast-message: '&6[ClearLag] &cThe server is overloaded, executing lag-perventing measures'
-  recover-broadcast-message: '&6[ClearLag] &aThe server is no longer overloaded!'
+  trigger-broadcast-message: '&6[ClearLag] &cThe server is overloaded, executing                                                                                                                                                                                                                                              lag-perventing measures'
+  recover-broadcast-message: '&6[ClearLag] &aThe server is no longer overloaded!                                                                                                                                                                                                                                             '
   broadcast-enabled: false
   interval: 15
   tps-trigger: 14.0
@@ -185,7 +187,7 @@ kill-mobs:
    mob-filter:
    - Villager
    - Wolf
-#  - Pig !name="Test" <- This entity will filtered if the name does NOT equal "Test"
+#  - Pig !name="Test" <- This entity will filtered if the name does NOT equal "T                                                                                                                                                                                                                                             est"
 #  - Zombie hasName <- This entity will be filtered if it HAS a name
    - ARMOR_STAND
    - Horse
@@ -201,7 +203,7 @@ kill-mobs:
 # --  the mobs spawned by the mobspawner upon chunk unload (Highly Recommended)
 mobspawner:
   enabled: true
-  max-spawn: 8
+  max-spawn: 4
   remove-mobs-on-chunk-unload: true
 
 #Dont use if you have CB++ or Spigot!
@@ -210,11 +212,11 @@ item-merger:
   radius: 6
 
 #Auto-removal options
-# -- warnings works like this; time = the time warning should be given, msg = warning message at that time
+# -- warnings works like this; time = the time warning should be given, msg = wa                                                                                                                                                                                                                                             rning message at that time
 # -- NOTE: The below 'remove' section applies to this remover!
 # -- NOTE: Putting the interval to low will cause issues!
 # -- NOTE: To disable "warnings", set it to "warnings: []"
-# -- NOTE: bukkit.broadcast.user permission will allow users to see broadcasts (If not enabled by default)
+# -- NOTE: bukkit.broadcast.user permission will allow users to see broadcasts (                                                                                                                                                                                                                                             If not enabled by default)
 #
 #        !==[ All string values MUST be inside '']==!
 #
@@ -242,12 +244,12 @@ auto-removal:
   remove-entities:
   # - cow <- This mob-type will be REMOVED during removal!
   # - MINECART_MOB_SPAWNER
-  # - Pig liveTime=100 <- This mob will be REMOVED if it's been alive for 100 ticks (5 seconds)
+  # - Pig liveTime=100 <- This mob will be REMOVED if it's been alive for 100 ti                                                                                                                                                                                                                                             cks (5 seconds)
   # - Minecart !isMounted <- This entity will be REMOVED if it's NOT mounted
   # - Wolf !hasName <- This entity will be REMOVED if it doesn't have a name
   warnings:
-        - 'time:400 msg:&4[ClearLag] &cWarning Ground items will be removed in &7+remaining &cseconds!'
-        - 'time:440 msg:&4[ClearLag] &cWarning Ground items will be removed in &7+remaining &cseconds!'
+        - 'time:400 msg:&4[ClearLag] &cWarning Ground items will be removed in &                                                                                                                                                                                                                                             7+remaining &cseconds!'
+        - 'time:440 msg:&4[ClearLag] &cWarning Ground items will be removed in &                                                                                                                                                                                                                                             7+remaining &cseconds!'
 
 #What should be removed during /lagg clear
 command-remove:
@@ -283,7 +285,7 @@ command-remove:
     - elder_guardian
   # - cow <- This mob-type will be REMOVED during removal!
   # - MINECART_MOB_SPAWNER
-  # - Pig liveTime=100 <- This mob will be REMOVED if it's been alive for 100 ticks (5 seconds)
+  # - Pig liveTime=100 <- This mob will be REMOVED if it's been alive for 100 ti                                                                                                                                                                                                                                             cks (5 seconds)
   # - Minecart !isMounted <- This entity will be REMOVED if it's NOT mounted
   # - Wolf !hasName <- This entity will be REMOVED if it doesn't have a name
 
@@ -291,7 +293,7 @@ limit:
   enabled: false
   max: 1000
   check-interval: 60
-  broadcast-message: '&6[ClearLag] &aLimit reached, removed +RemoveAmount Entities!'
+  broadcast-message: '&6[ClearLag] &aLimit reached, removed +RemoveAmount Entiti                                                                                                                                                                                                                                             es!'
   world-filter:
   # - this_world <-This world will be ignored during removal!
   broadcast-removal: false
